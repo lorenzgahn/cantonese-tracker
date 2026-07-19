@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+data/*.json
+data/*.json.bak
+data/dialogues/
+etl/downloads/
