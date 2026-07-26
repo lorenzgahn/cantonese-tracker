@@ -164,7 +164,7 @@ def test_reconcile_flagged_lines_replaces_placeholder_with_segmented_tokens(monk
     monkeypatch.setattr(
         pdf_parser.llm,
         "validate_segmentation_batch",
-        lambda flagged: {"line-0": [("行山", "haang4saan1"), ("呀", "aa3")]},
+        lambda flagged: {"line-0": [("行山", "haang4saan1", ""), ("呀", "aa3", "?")]},
     )
 
     reconcile_flagged_lines(result)
@@ -172,6 +172,7 @@ def test_reconcile_flagged_lines_replaces_placeholder_with_segmented_tokens(monk
     line = result.dialogue.lines[0]
     assert [w.hanzi for w in line.words] == ["行山", "呀"]
     assert [w.jyutping for w in line.words] == ["haang4saan1", "aa3"]
+    assert [w.trailing_punctuation for w in line.words] == ["", "?"]
     assert line.words[0].word_id == compute_word_id("haang4saan1", "行山")
 
 

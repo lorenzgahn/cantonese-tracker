@@ -26,6 +26,14 @@ function postJson<T>(path: string, body: unknown): Promise<T> {
   });
 }
 
+// A bare "example.com/ep1" pasted without a scheme would otherwise render
+// as a broken relative link — assume https if none was given.
+export function normalizeUrl(url: string): string {
+  const trimmed = url.trim();
+  if (!trimmed) return trimmed;
+  return /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(trimmed) ? trimmed : `https://${trimmed}`;
+}
+
 // --- Dialogues / Review ---
 
 export function listDialogues(): Promise<Dialogue[]> {
@@ -91,6 +99,12 @@ export function deleteDialogue(dialogueId: string): Promise<void> {
   return request(`/api/dialogues/${dialogueId}`, { method: "DELETE" });
 }
 
+// Sets, edits, or clears (pass null) this dialogue's link to its
+// original audio/video/source content.
+export function setDialogueLink(dialogueId: string, url: string | null): Promise<Dialogue> {
+  return postJson(`/api/dialogues/${dialogueId}/link`, { url });
+}
+
 // --- Import ---
 
 export function detectInputType(args: { text?: string; filename?: string }): Promise<DetectedInputType> {
@@ -107,13 +121,17 @@ interface ImportResponse {
 
 export async function importPdf(
   file: File,
+  title: string,
   series: DialogueSeries,
   level: number | null,
+  linkUrl: string | null,
 ): Promise<ImportResponse> {
   const form = new FormData();
   form.append("file", file);
+  form.append("title", title);
   form.append("series", series);
   if (level !== null) form.append("level", String(level));
+  if (linkUrl !== null) form.append("link_url", linkUrl);
   const res = await fetch(`${BASE_URL}/api/import/pdf`, { method: "POST", body: form });
   if (!res.ok) throw new Error(`import/pdf failed: ${res.status}`);
   return res.json();
@@ -124,8 +142,9 @@ export function importHanziNarrative(
   title: string,
   series: DialogueSeries,
   level: number | null,
+  linkUrl: string | null,
 ): Promise<ImportResponse> {
-  return postJson("/api/import/hanzi-narrative", { text, title, series, level });
+  return postJson("/api/import/hanzi-narrative", { text, title, series, level, link_url: linkUrl });
 }
 
 export function importLegacyAnnotated(
@@ -133,8 +152,9 @@ export function importLegacyAnnotated(
   title: string,
   series: DialogueSeries,
   level: number | null,
+  linkUrl: string | null,
 ): Promise<ImportResponse> {
-  return postJson("/api/import/legacy-annotated", { text, title, series, level });
+  return postJson("/api/import/legacy-annotated", { text, title, series, level, link_url: linkUrl });
 }
 
 export function importPlainJyutping(
@@ -142,8 +162,9 @@ export function importPlainJyutping(
   title: string,
   series: DialogueSeries,
   level: number | null,
+  linkUrl: string | null,
 ): Promise<ImportResponse> {
-  return postJson("/api/import/plain-jyutping", { text, title, series, level });
+  return postJson("/api/import/plain-jyutping", { text, title, series, level, link_url: linkUrl });
 }
 
 // --- Vocab ---

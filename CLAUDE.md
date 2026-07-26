@@ -72,5 +72,10 @@ UI conventions worth preserving (explicit user preferences, not defaults): no Ch
 
 ## Local dev environment notes
 
-- Dev servers (`uvicorn`, `vite`) are **not daemonized** across sessions — they die when the enclosing session/terminal does. Before assuming the app is running, check (`curl localhost:8000/api/health`, `curl -o /dev/null -w "%{http_code}" localhost:5173`) rather than trusting a previous turn's state.
-- The `.claude/launch.json` used by the preview/browser tooling lives at the **parent** directory (one level above this project root), not inside `cantonese-tracker/` — check there first if `preview_start` can't find a named config.
+- As of 2026-07-20, both dev servers run **detached in `screen` sessions** (`cantonese-backend`, `cantonese-frontend`) launched directly via Bash — not through the preview tool's `preview_start`/launch.json mechanism, which only survives as long as that tool's own session does. `screen -dmS <name> bash -c '...'` daemonizes to PID 1, so it survives the conversation ending and the laptop sleeping (sleep suspends processes, it doesn't kill them). Before assuming the app is down, check first (`curl -o /dev/null -w "%{http_code}" localhost:8000/api/dialogues`, same for `localhost:5173`) rather than restarting — it's very likely already running.
+  - List sessions: `screen -ls`
+  - Reattach to watch logs: `screen -r cantonese-backend` (or `-frontend`); detach without killing it via `Ctrl-A` then `D`
+  - Stop one: `screen -X -S cantonese-backend quit`
+  - Relaunch backend: `screen -dmS cantonese-backend bash -c 'cd backend && source .venv/bin/activate && exec uvicorn app.main:app --reload --port 8000'`
+  - Relaunch frontend: `screen -dmS cantonese-frontend bash -c 'cd frontend && exec npm run dev -- --port 5173'`
+- The `.claude/launch.json` used by the preview/browser tooling's `preview_start` lives at the **parent** directory (one level above this project root) — only relevant if reverting to that (session-scoped, not laptop-sleep-proof) approach.

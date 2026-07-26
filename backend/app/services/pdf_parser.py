@@ -26,6 +26,7 @@ Both were caught by running this against the real 8-page sample, not a
 synthetic one.
 """
 
+import logging
 import unicodedata
 from dataclasses import dataclass, field
 from datetime import date
@@ -41,6 +42,8 @@ from app.services.segmentation import (
     is_suspicious_merge,
     project_hanzi_to_jyutping,
 )
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -153,6 +156,7 @@ def build_stored_dialogue(dialogue_id: str, title: str, turns: list[RawTurn]) ->
                     word_id=compute_word_id(word.jyutping, word.hanzi),
                     jyutping=word.jyutping,
                     hanzi=word.hanzi,
+                    trailing_punctuation=word.trailing_punctuation,
                 )
                 for j, word in enumerate(result.words)
             ]
@@ -175,7 +179,7 @@ def build_stored_dialogue(dialogue_id: str, title: str, turns: list[RawTurn]) ->
                 )
             ]
 
-        lines.append(StoredLine(id=line_id, speaker=turn.speaker, words=tokens))
+        lines.append(StoredLine(id=line_id, speaker=turn.speaker, words=tokens, english=turn.english or None))
 
     dialogue = StoredDialogue(
         id=dialogue_id,
@@ -192,17 +196,23 @@ def reconcile_flagged_lines(result: ImportResult) -> None:
     placeholder token with a real per-word segmentation, mutating
     result.dialogue's lines in place. Best-effort — on any LLM failure the
     placeholder tokens are left as-is rather than failing the import,
-    matching definitions.resolve_definition()'s graceful-degradation pattern."""
+    matching definitions.resolve_definition()'s graceful-degradation
+    pattern (validate_segmentation_batch itself already logs a per-chunk
+    warning on failure; this only needs to log the lines that still came
+    back with nothing, so an unresolved-word bug report can be traced
+    back to *why* without re-running the import)."""
     if not result.flagged_lines:
         return
 
     try:
         segmented = llm.validate_segmentation_batch(result.flagged_lines)
     except Exception:
+        logger.warning("reconcile_flagged_lines: validate_segmentation_batch call failed", exc_info=True)
         return
 
-    if not segmented:
-        return
+    unresolved = [f["line_id"] for f in result.flagged_lines if not segmented.get(f["line_id"])]
+    if unresolved:
+        logger.warning("reconcile_flagged_lines: no segmentation returned for line_ids=%s", unresolved)
 
     lines_by_id = {line.id: line for line in result.dialogue.lines}
     for line_id, words in segmented.items():
@@ -215,8 +225,9 @@ def reconcile_flagged_lines(result: ImportResult) -> None:
                 word_id=compute_word_id(jyutping, hanzi) or f"unresolved-{line_id}-w{j}",
                 jyutping=jyutping,
                 hanzi=hanzi,
+                trailing_punctuation=trailing_punctuation,
             )
-            for j, (hanzi, jyutping) in enumerate(words)
+            for j, (hanzi, jyutping, trailing_punctuation) in enumerate(words)
         ]
 
 

@@ -14,7 +14,7 @@ import json
 from app.config import DIALOGUES_DIR
 from app.models.dialogue import Dialogue, Line, StoredDialogue, StoredWordToken, WordToken
 from app.models.vocab import DefinitionSource, VocabStatus
-from app.services import vocab_store
+from app.services import definitions, dictionary, vocab_store
 from app.services.segmentation import compute_word_id
 
 
@@ -40,6 +40,19 @@ def delete_stored(dialogue_id: str) -> None:
     _path(dialogue_id).unlink(missing_ok=True)
 
 
+def set_link_url(dialogue_id: str, url: str | None) -> StoredDialogue:
+    """Sets (or clears, if url is None/empty) the link to this dialogue's
+    original audio/video/source content — settable at import time or
+    added/edited later, since not every dialogue has one up front. Raises
+    ValueError if the dialogue doesn't exist."""
+    stored = load_stored(dialogue_id)
+    if stored is None:
+        raise ValueError(f"No dialogue {dialogue_id!r}")
+    stored.link_url = url or None
+    save_stored(stored)
+    return stored
+
+
 def set_definition_override(dialogue_id: str, word_id: str, definition: str) -> StoredDialogue:
     """Records a definition for word_id that only applies within this
     dialogue — for a jyutping that's shared globally but means something
@@ -53,6 +66,67 @@ def set_definition_override(dialogue_id: str, word_id: str, definition: str) -> 
     stored.definition_overrides[word_id] = definition
     save_stored(stored)
     return stored
+
+
+def resolve_word_definition(
+    dialogue_id: str,
+    word_id: str,
+    *,
+    hanzi: str | None,
+    jyutping: str,
+    line_context: str,
+    english_context: str | None,
+) -> tuple[str | None, DefinitionSource | None]:
+    """The single place that decides *where* a word's definition gets
+    cached: globally (the shared vocab_store default) for words with
+    zero or one dictionary sense, or per-dialogue (definition_overrides)
+    for genuinely ambiguous ones. This split exists because "same
+    jyutping, same hanzi, but the correct sense depends on context"
+    (e.g. 就 meaning "then" vs "right away") stops being resolvable by a
+    single global cache once resolution is context-aware — a per-word
+    definition history isn't needed for this: definition_overrides
+    already *is* that storage, just keyed by dialogue instead of an
+    ordered list.
+
+    Idempotent within a dialogue: a word already resolved here (an
+    existing override) is returned with no new LLM call. An unambiguous
+    word still behaves exactly as before this feature existed — reuse
+    the global cache if set, else resolve once and let the caller cache
+    it globally via vocab_store.record_click, same as always.
+
+    Returns (definition, source) for the caller to pass straight into
+    vocab_store.record_click, unchanged from that function's existing
+    contract. Raises ValueError if the dialogue doesn't exist."""
+    stored = load_stored(dialogue_id)
+    if stored is None:
+        raise ValueError(f"No dialogue {dialogue_id!r}")
+
+    override = stored.definition_overrides.get(word_id)
+    if override is not None:
+        return override, DefinitionSource.MANUAL
+
+    hits = dictionary.lookup(hanzi=hanzi, jyutping=jyutping)
+    is_ambiguous = len(definitions.flatten_candidate_definitions(hits)) > 1
+
+    if not is_ambiguous:
+        existing = vocab_store.get(word_id)
+        if existing and existing.definition:
+            return existing.definition, existing.source_of_definition
+        return definitions.resolve_definition(
+            hanzi=hanzi, jyutping=jyutping, line_context=line_context, english_context=english_context
+        )
+
+    # Ambiguous: always resolve fresh for *this* dialogue's context,
+    # never silently reuse whatever some other dialogue's occurrence
+    # happened to produce. Stamped MANUAL (not LLM) to match what
+    # join_with_vocab will show on every later read of this override —
+    # returning LLM here would make the very next page load disagree
+    # with what this click just showed.
+    definition, _source = definitions.resolve_definition(
+        hanzi=hanzi, jyutping=jyutping, line_context=line_context, english_context=english_context
+    )
+    set_definition_override(dialogue_id, word_id, definition)
+    return definition, DefinitionSource.MANUAL
 
 
 def merge_adjacent_tokens(dialogue_id: str, line_id: str, word_id: str) -> tuple[StoredDialogue, str]:
@@ -211,6 +285,7 @@ def join_with_vocab(stored: StoredDialogue) -> Dialogue:
                     word_id=token.word_id,
                     jyutping=token.jyutping,
                     hanzi=token.hanzi,
+                    trailing_punctuation=token.trailing_punctuation,
                     status=entry.status if entry else VocabStatus.KNOWN,
                     definition=definition,
                     source_of_definition=source_of_definition,
@@ -225,6 +300,7 @@ def join_with_vocab(stored: StoredDialogue) -> Dialogue:
         imported_at=stored.imported_at,
         series=stored.series,
         level=stored.level,
+        link_url=stored.link_url,
     )
 
 

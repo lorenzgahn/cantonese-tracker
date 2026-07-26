@@ -6,6 +6,7 @@ export interface WordToken {
   word_id: string;
   jyutping: string;
   hanzi: string | null;
+  trailing_punctuation: string;
   status: VocabStatus;
   definition: string | null;
   source_of_definition: DefinitionSource | null;
@@ -25,6 +26,7 @@ export interface Dialogue {
   imported_at: string;
   series: string;
   level: number | null;
+  link_url: string | null;
 }
 
 export type DialogueSeries = "Hambaanglaang" | "Cantonese Conversations" | "Other";

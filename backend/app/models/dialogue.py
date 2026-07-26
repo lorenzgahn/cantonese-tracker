@@ -15,12 +15,23 @@ class StoredWordToken(BaseModel):
     word_id: str  # canonical vocab key this token resolves to, e.g. "faan1zo2"
     jyutping: str
     hanzi: str | None = None
+    # Punctuation immediately following this word in the source (".",
+    # "...", "?", ...) — display-only. Deliberately excluded from word_id
+    # (see jyutping_utils.compute_word_id) so the same word doesn't
+    # fragment into a different vocab entry depending on whether this
+    # particular occurrence happens to sit at a clause boundary.
+    trailing_punctuation: str = ""
 
 
 class StoredLine(BaseModel):
     id: str
     speaker: str | None = None
     words: list[StoredWordToken]
+    # This turn's English translation, when the source provided one (PDF
+    # imports only) — internal signal for definitions.resolve_definition,
+    # deliberately never exposed to the frontend (WordToken/Dialogue have
+    # no equivalent field; nothing renders it).
+    english: str | None = None
 
 
 class StoredDialogue(BaseModel):
@@ -32,6 +43,7 @@ class StoredDialogue(BaseModel):
     series: str = "Other"  # which book/course this came from — "Hambaanglaang" | "Cantonese Conversations" | "Other"
     level: int | None = None  # Hambaanglaang's numbered level (1, 2, ...); blank for series without one
     definition_overrides: dict[str, str] = {}  # word_id -> this dialogue's own sense, when the shared default is wrong here
+    link_url: str | None = None  # link to the original audio/video/source content, shown as "Link to Dialogue" on Review
 
 
 class WordToken(BaseModel):
@@ -42,6 +54,7 @@ class WordToken(BaseModel):
     word_id: str
     jyutping: str
     hanzi: str | None = None
+    trailing_punctuation: str = ""
     status: VocabStatus
     definition: str | None = None
     source_of_definition: DefinitionSource | None = None
@@ -61,3 +74,4 @@ class Dialogue(BaseModel):
     imported_at: str = ""
     series: str = "Other"
     level: int | None = None
+    link_url: str | None = None

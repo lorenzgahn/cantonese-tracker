@@ -40,6 +40,7 @@ appear on ordinary narrative vocabulary, confirmed against the real
 sample text, not hypothesized.
 """
 
+import logging
 import re
 from dataclasses import dataclass, field
 from datetime import date
@@ -47,6 +48,8 @@ from datetime import date
 from app.models.dialogue import StoredDialogue, StoredLine, StoredWordToken
 from app.services import dictionary, llm
 from app.services.segmentation import compute_word_id, is_suspicious_merge, segment_hanzi
+
+logger = logging.getLogger(__name__)
 
 _SCENE_MARKER_PATTERN = re.compile(r"\[(\d+[a-z]*)\]")
 
@@ -174,10 +177,12 @@ def reconcile_unresolved_words(result: ImportResult) -> None:
     try:
         generated = llm.generate_jyutping_batch(sorted(unresolved_hanzi))
     except Exception:
+        logger.warning("reconcile_unresolved_words: generate_jyutping_batch call failed", exc_info=True)
         return
 
-    if not generated:
-        return
+    missed = unresolved_hanzi - generated.keys()
+    if missed:
+        logger.warning("reconcile_unresolved_words: no jyutping generated for hanzi=%s", sorted(missed))
 
     for line in result.dialogue.lines:
         for token in line.words:
@@ -204,16 +209,22 @@ def reconcile_flagged_lines(result: ImportResult) -> None:
             [{"line_id": f["line_id"], "hanzi": f["hanzi"]} for f in result.flagged_lines]
         )
     except Exception:
+        logger.warning("reconcile_flagged_lines: validate_segmentation_batch call failed", exc_info=True)
         return
 
-    if not segmented:
-        return
+    unresolved = [f["line_id"] for f in result.flagged_lines if not segmented.get(f["line_id"])]
+    if unresolved:
+        logger.warning("reconcile_flagged_lines: no segmentation returned for line_ids=%s", unresolved)
 
     lines_by_id = {line.id: line for line in result.dialogue.lines}
     for line_id, words in segmented.items():
         line = lines_by_id.get(line_id)
         if line is None or not words:
             continue
+        # trailing_punctuation (validate_segmentation_batch's 3rd element)
+        # is deliberately not used here — punctuation preservation is a
+        # PDF-import (Type 1) behavior; Type 4 narrative text keeps its
+        # existing punctuation-free tokens.
         line.words = [
             StoredWordToken(
                 token_id=f"{line_id}-w{j}",
@@ -221,7 +232,7 @@ def reconcile_flagged_lines(result: ImportResult) -> None:
                 jyutping=jyutping,
                 hanzi=hanzi,
             )
-            for j, (hanzi, jyutping) in enumerate(words)
+            for j, (hanzi, jyutping, _trailing_punctuation) in enumerate(words)
         ]
 
 

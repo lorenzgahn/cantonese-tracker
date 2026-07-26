@@ -354,3 +354,143 @@ def test_override_in_one_dialogue_does_not_affect_another():
 
     assert dialogue_store.get_dialogue("d1").lines[0].words[0].definition == "still; yet"
     assert dialogue_store.get_dialogue("d2").lines[0].words[0].definition == "(adverb) even more so"
+
+
+def test_set_link_url_persists_to_disk():
+    dialogue_store.save_stored(_dialogue_with_shared_word())
+    dialogue_store.set_link_url("d1", "https://example.com/episode-1")
+
+    reloaded = dialogue_store.load_stored("d1")
+    assert reloaded.link_url == "https://example.com/episode-1"
+
+
+def test_set_link_url_clears_with_empty_string():
+    dialogue_store.save_stored(_dialogue_with_shared_word())
+    dialogue_store.set_link_url("d1", "https://example.com/episode-1")
+    dialogue_store.set_link_url("d1", "")
+
+    reloaded = dialogue_store.load_stored("d1")
+    assert reloaded.link_url is None
+
+
+def test_set_link_url_raises_for_unknown_dialogue():
+    with pytest.raises(ValueError):
+        dialogue_store.set_link_url("never-seen", "https://example.com/episode-1")
+
+
+def test_join_with_vocab_carries_link_url_through():
+    stored = _dialogue_with_shared_word()
+    stored.link_url = "https://example.com/episode-1"
+    dialogue_store.save_stored(stored)
+
+    joined = dialogue_store.get_dialogue("d1")
+    assert joined.link_url == "https://example.com/episode-1"
+
+
+# --- resolve_word_definition: where an ambiguous-vs-unambiguous word's
+# definition gets cached (global default vs this dialogue's override) ---
+
+
+def _single_sense_hit():
+    return [{"traditional": "仲", "simplified": "仲", "jyutping": "zung6", "definitions": ["only sense"]}]
+
+
+def _multi_sense_hit():
+    return [
+        {
+            "traditional": "仲",
+            "simplified": "仲",
+            "jyutping": "zung6",
+            "definitions": ["still; yet", "even more so"],
+        }
+    ]
+
+
+def test_resolve_word_definition_reuses_the_global_cache_for_an_unambiguous_word(monkeypatch):
+    monkeypatch.setattr(dialogue_store.dictionary, "lookup", lambda **kw: _single_sense_hit())
+    dialogue_store.save_stored(_dialogue_with_shared_word())
+    vocab_store.save(
+        VocabEntry(
+            id="zung6", status=VocabStatus.LEARNING, definition="cached def", source_of_definition=DefinitionSource.DICTIONARY
+        )
+    )
+
+    def _fail_if_called(**kwargs):
+        raise AssertionError("should reuse the global cache, not resolve again")
+
+    monkeypatch.setattr(dialogue_store.definitions, "resolve_definition", _fail_if_called)
+
+    definition, source = dialogue_store.resolve_word_definition(
+        "d1", "zung6", hanzi="仲", jyutping="zung6", line_context="...", english_context=None
+    )
+    assert definition == "cached def"
+    assert source == DefinitionSource.DICTIONARY
+
+
+def test_resolve_word_definition_resolves_and_caches_globally_when_unambiguous_and_uncached(monkeypatch):
+    monkeypatch.setattr(dialogue_store.dictionary, "lookup", lambda **kw: _single_sense_hit())
+    dialogue_store.save_stored(_dialogue_with_shared_word())
+    monkeypatch.setattr(
+        dialogue_store.definitions, "resolve_definition", lambda **kw: ("fresh def", DefinitionSource.DICTIONARY)
+    )
+
+    definition, source = dialogue_store.resolve_word_definition(
+        "d1", "zung6", hanzi="仲", jyutping="zung6", line_context="...", english_context=None
+    )
+    assert definition == "fresh def"
+    # unambiguous — must not create a per-dialogue override
+    reloaded = dialogue_store.load_stored("d1")
+    assert "zung6" not in reloaded.definition_overrides
+
+
+def test_resolve_word_definition_always_resolves_fresh_for_an_ambiguous_word(monkeypatch):
+    monkeypatch.setattr(dialogue_store.dictionary, "lookup", lambda **kw: _multi_sense_hit())
+    dialogue_store.save_stored(_dialogue_with_shared_word())
+    # a different dialogue already cached *a* definition globally
+    vocab_store.save(
+        VocabEntry(
+            id="zung6",
+            status=VocabStatus.LEARNING,
+            definition="some other dialogue's sense",
+            source_of_definition=DefinitionSource.MANUAL,
+        )
+    )
+    monkeypatch.setattr(
+        dialogue_store.definitions, "resolve_definition", lambda **kw: ("this dialogue's sense", DefinitionSource.LLM)
+    )
+
+    definition, source = dialogue_store.resolve_word_definition(
+        "d1", "zung6", hanzi="仲", jyutping="zung6", line_context="...", english_context=None
+    )
+    assert definition == "this dialogue's sense"
+    # stamped MANUAL — matches what join_with_vocab will show on every
+    # later read of this override, so the click response and a reload
+    # never disagree
+    assert source == DefinitionSource.MANUAL
+
+    reloaded = dialogue_store.load_stored("d1")
+    assert reloaded.definition_overrides["zung6"] == "this dialogue's sense"
+
+
+def test_resolve_word_definition_is_idempotent_within_a_dialogue(monkeypatch):
+    dialogue_store.save_stored(_dialogue_with_shared_word())
+    dialogue_store.set_definition_override("d1", "zung6", "already resolved")
+
+    def _fail_if_called(**kwargs):
+        raise AssertionError("an override already exists for this dialogue — must not resolve again")
+
+    monkeypatch.setattr(dialogue_store.dictionary, "lookup", _fail_if_called)
+    monkeypatch.setattr(dialogue_store.definitions, "resolve_definition", _fail_if_called)
+
+    definition, source = dialogue_store.resolve_word_definition(
+        "d1", "zung6", hanzi="仲", jyutping="zung6", line_context="...", english_context=None
+    )
+    assert definition == "already resolved"
+    assert source == DefinitionSource.MANUAL
+
+
+def test_resolve_word_definition_raises_for_unknown_dialogue():
+    with pytest.raises(ValueError):
+        dialogue_store.resolve_word_definition(
+            "never-seen", "zung6", hanzi=None, jyutping="zung6", line_context="", english_context=None
+        )

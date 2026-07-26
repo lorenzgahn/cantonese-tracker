@@ -6,9 +6,11 @@ import {
   finishReview,
   getDialogue,
   mergeWithNext,
+  normalizeUrl,
   promoteWord,
   reevaluateWord,
   setDefinitionOverride,
+  setDialogueLink,
   splitWord,
   unclickWord,
 } from "../api/client";
@@ -131,6 +133,16 @@ export function ReviewPage() {
     setDialogue(updated);
   }
 
+  // Adds, edits, or clears (empty input) this dialogue's link to its
+  // original audio/video/source content — settable at import time, or
+  // here for dialogues that don't have one yet.
+  async function handleEditLink() {
+    const next = window.prompt("Link to dialogue content:", dialogue?.link_url ?? "");
+    if (next === null) return;
+    const updated = await setDialogueLink(dialogueId, next.trim() ? normalizeUrl(next) : null);
+    setDialogue(updated);
+  }
+
   async function handleFinishReview() {
     if (!dialogue) return;
     setFinishing(true);
@@ -154,7 +166,23 @@ export function ReviewPage() {
     <div className="review-page">
       <div className="page-header">
         <h1>{dialogue.title}</h1>
-        <Link to={`/dialogues/${dialogueId}/doc`}>View extracted doc</Link>
+        <div className="page-header-links">
+          {dialogue.link_url ? (
+            <>
+              <a href={dialogue.link_url} target="_blank" rel="noopener noreferrer">
+                Link to Dialogue
+              </a>
+              <button className="link-edit-button" onClick={handleEditLink}>
+                edit
+              </button>
+            </>
+          ) : (
+            <button className="link-edit-button" onClick={handleEditLink}>
+              + Add link to dialogue
+            </button>
+          )}
+          <Link to={`/dialogues/${dialogueId}/doc`}>View extracted doc</Link>
+        </div>
       </div>
 
       {dialogue.lines.map((line) => (

@@ -27,13 +27,17 @@ def detect_input_type(body: DetectInputTypeRequest) -> dict:
 
 @router.post("/pdf")
 async def import_pdf(
-    file: UploadFile = File(...), series: str = Form("Other"), level: int | None = Form(None)
+    file: UploadFile = File(...),
+    title: str | None = Form(None),
+    series: str = Form("Other"),
+    level: int | None = Form(None),
+    link_url: str | None = Form(None),
 ) -> dict:
     if file.filename is None or not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Expected a .pdf file")
 
     dialogue_id = uuid.uuid4().hex[:8]
-    title = Path(file.filename).stem
+    title = title or Path(file.filename).stem
 
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
         tmp.write(await file.read())
@@ -46,6 +50,7 @@ async def import_pdf(
 
     result.dialogue.series = series
     result.dialogue.level = level
+    result.dialogue.link_url = link_url or None
     dialogue_store.save_stored(result.dialogue)
 
     return {
@@ -62,6 +67,7 @@ class ImportHanziNarrativeRequest(BaseModel):
     title: str = "Untitled"
     series: str = "Other"
     level: int | None = None
+    link_url: str | None = None
 
 
 @router.post("/hanzi-narrative")
@@ -70,6 +76,7 @@ def import_hanzi_narrative_text(body: ImportHanziNarrativeRequest) -> dict:
     result = hanzi_narrative.import_hanzi_narrative(body.text, dialogue_id, body.title)
     result.dialogue.series = body.series
     result.dialogue.level = body.level
+    result.dialogue.link_url = body.link_url or None
     dialogue_store.save_stored(result.dialogue)
 
     return {
@@ -86,6 +93,7 @@ class ImportLegacyAnnotatedRequest(BaseModel):
     title: str = "Untitled"
     series: str = "Other"
     level: int | None = None
+    link_url: str | None = None
 
 
 @router.post("/legacy-annotated")
@@ -94,6 +102,7 @@ def import_legacy_annotated_text(body: ImportLegacyAnnotatedRequest) -> dict:
     dialogue = legacy_annotated.import_legacy_annotated(body.text, dialogue_id, body.title)
     dialogue.series = body.series
     dialogue.level = body.level
+    dialogue.link_url = body.link_url or None
     dialogue_store.save_stored(dialogue)
 
     return {
@@ -109,6 +118,7 @@ class ImportPlainJyutpingRequest(BaseModel):
     title: str = "Untitled"
     series: str = "Other"
     level: int | None = None
+    link_url: str | None = None
 
 
 @router.post("/plain-jyutping")
@@ -117,6 +127,7 @@ def import_plain_jyutping_text(body: ImportPlainJyutpingRequest) -> dict:
     result = plain_jyutping.import_plain_jyutping(body.text, dialogue_id, body.title)
     result.dialogue.series = body.series
     result.dialogue.level = body.level
+    result.dialogue.link_url = body.link_url or None
     dialogue_store.save_stored(result.dialogue)
 
     return {

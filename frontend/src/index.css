@@ -57,6 +57,27 @@ a {
   margin-bottom: 1rem;
 }
 
+.page-header-links {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.link-edit-button {
+  font: inherit;
+  font-size: 0.85em;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-edit-button:hover {
+  color: var(--fg);
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -102,6 +123,57 @@ td {
 .vocab-controls select {
   width: auto;
   display: inline-block;
+}
+
+.library-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.library-filters select {
+  font: inherit;
+  padding: 0.4rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+}
+
+.library-filter-title {
+  font: inherit;
+  padding: 0.4rem;
+  min-width: 180px;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+}
+
+.library-filters-clear {
+  font-size: 0.85em;
+  padding: 0.3rem 0.7rem;
+}
+
+.sortable-header {
+  font: inherit;
+  font-weight: 700;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.sortable-header:hover {
+  text-decoration: underline;
+}
+
+.sort-indicator {
+  font-weight: 400;
+  font-size: 0.85em;
 }
 
 button {

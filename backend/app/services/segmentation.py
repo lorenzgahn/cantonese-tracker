@@ -67,16 +67,6 @@ def segment_hanzi(text: str) -> list[tuple[str, tuple[int, int]]]:
     return result
 
 
-def extract_jyutping_syllables(jyutping_line: str) -> list[str]:
-    """Pulls jyutping syllables (letters + trailing tone digit) out of a
-    line, ignoring surrounding punctuation/spacing. Code-switched English
-    words with no tone digit (KEEP, PO, SHOPPING, ...) are deliberately
-    NOT matched here — their absence is what makes
-    project_hanzi_to_jyutping's syllable count come up short and route
-    the line to the LLM validation pass, per SPEC.md §4 Step 2."""
-    return JYUTPING_SYLLABLE_PATTERN.findall(jyutping_line)
-
-
 # Real Cantonese words this long are almost always either a whole-word
 # CC-Canto entry (idioms/proper compounds) or a dictionary gap on an
 # otherwise-correct word (e.g. 星期日) — either way a whole-word lookup
@@ -105,6 +95,13 @@ def is_cjk_char(ch: str) -> bool:
 class WordSpan:
     hanzi: str
     jyutping: str  # space-joined syllables for this word
+    # Punctuation immediately following this word in the source line
+    # (".", "...", "?", ...), kept out of `jyutping` deliberately — display
+    # only, on WordToken.trailing_punctuation. Folding it into `jyutping`
+    # would fold it into word_id too (see jyutping_utils.compute_word_id),
+    # so the same word would fragment into a different vocab entry
+    # depending on whether it happened to sit at a clause boundary.
+    trailing_punctuation: str = ""
 
 
 @dataclass
@@ -125,7 +122,11 @@ def project_hanzi_to_jyutping(hanzi_line: str, jyutping_line: str) -> Projection
     character count; on mismatch, returns aligned=False rather than
     guessing at a misaligned slice — SPEC.md is explicit that a whole
     misaligned line should be flagged for the LLM pass, not silently
-    sliced wrong.
+    sliced wrong. Punctuation between/after syllables in jyutping_line is
+    recovered via each syllable match's real position (a plain .findall()
+    would discard that) and attached to the preceding word as
+    WordSpan.trailing_punctuation, so PDF imports keep it instead of
+    silently dropping it.
     """
     # Checked explicitly and first: filtering both sides down to CJK-only
     # / tone-digit-only tokens means a code-switched word (no hanzi, no
@@ -142,7 +143,8 @@ def project_hanzi_to_jyutping(hanzi_line: str, jyutping_line: str) -> Projection
     hanzi_words = [word for word, _span in segment_hanzi(hanzi_line)]
     total_hanzi_chars = sum(len(word) for word in hanzi_words)
 
-    syllables = extract_jyutping_syllables(jyutping_line)
+    syllable_matches = list(JYUTPING_SYLLABLE_PATTERN.finditer(jyutping_line))
+    syllables = [m.group() for m in syllable_matches]
 
     if len(syllables) != total_hanzi_chars:
         return ProjectionResult(words=[], aligned=False, reason="syllable_count_mismatch")
@@ -151,7 +153,15 @@ def project_hanzi_to_jyutping(hanzi_line: str, jyutping_line: str) -> Projection
     cursor = 0
     for word in hanzi_words:
         n = len(word)
-        words.append(WordSpan(hanzi=word, jyutping=" ".join(syllables[cursor : cursor + n])))
+        word_matches = syllable_matches[cursor : cursor + n]
+        jyutping_text = " ".join(m.group() for m in word_matches)
+
+        next_start = (
+            syllable_matches[cursor + n].start() if cursor + n < len(syllable_matches) else len(jyutping_line)
+        )
+        trailing_punctuation = jyutping_line[word_matches[-1].end() : next_start].strip()
+
+        words.append(WordSpan(hanzi=word, jyutping=jyutping_text, trailing_punctuation=trailing_punctuation))
         cursor += n
     return ProjectionResult(words=words, aligned=True)
 

@@ -69,6 +69,7 @@ export function WordToken({
     return (
       <span onClick={() => onToggle(token.word_id)} className={`word-token ${statusClass}`.trim()}>
         {token.jyutping}
+        {token.trailing_punctuation}
       </span>
     );
   }

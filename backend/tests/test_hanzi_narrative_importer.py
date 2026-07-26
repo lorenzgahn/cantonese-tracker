@@ -236,7 +236,7 @@ def test_import_hanzi_narrative_end_to_end_resolves_flagged_words_via_mocked_llm
     monkeypatch.setattr(
         hanzi_narrative.llm,
         "validate_segmentation_batch",
-        lambda flagged: {"scene-2": [("星期日", "sing1kei4jat6"), ("其餘", "kei4jyu4")]},
+        lambda flagged: {"scene-2": [("星期日", "sing1kei4jat6", ""), ("其餘", "kei4jyu4", "")]},
     )
 
     result = import_hanzi_narrative(SAMPLE_TEXT, "test-narrative", "New Raincoat")

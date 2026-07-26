@@ -6,6 +6,7 @@ import {
   importLegacyAnnotated,
   importPdf,
   importPlainJyutping,
+  normalizeUrl,
 } from "../api/client";
 import type { DetectedInputType, DialogueSeries } from "../types";
 
@@ -26,6 +27,7 @@ export function ImportPage() {
   const [file, setFile] = useState<File | null>(null);
   const [series, setSeries] = useState<DialogueSeries>("Other");
   const [level, setLevel] = useState<number | null>(null);
+  const [linkUrl, setLinkUrl] = useState("");
   const [detected, setDetected] = useState<DetectedInputType>("unknown");
   const [selectedType, setSelectedType] = useState<DetectedInputType>("unknown");
   const [overridden, setOverridden] = useState(false);
@@ -77,20 +79,21 @@ export function ImportPage() {
     setBusy(true);
     setError(null);
     try {
+      const link = linkUrl.trim() ? normalizeUrl(linkUrl) : null;
       let result: { dialogue_id: string };
       switch (selectedType) {
         case "structured_pdf":
           if (!file) throw new Error("Choose a PDF file first");
-          result = await importPdf(file, series, level);
+          result = await importPdf(file, title || "Untitled", series, level, link);
           break;
         case "hanzi_narrative":
-          result = await importHanziNarrative(text, title || "Untitled", series, level);
+          result = await importHanziNarrative(text, title || "Untitled", series, level, link);
           break;
         case "legacy_annotated":
-          result = await importLegacyAnnotated(text, title || "Untitled", series, level);
+          result = await importLegacyAnnotated(text, title || "Untitled", series, level, link);
           break;
         case "plain_jyutping":
-          result = await importPlainJyutping(text, title || "Untitled", series, level);
+          result = await importPlainJyutping(text, title || "Untitled", series, level, link);
           break;
         default:
           throw new Error("Pick an input type before importing");
@@ -135,6 +138,16 @@ export function ImportPage() {
           />
         </label>
       )}
+
+      <label className="field">
+        Link to dialogue content (optional)
+        <input
+          type="text"
+          value={linkUrl}
+          onChange={(e) => setLinkUrl(e.target.value)}
+          placeholder="https://…"
+        />
+      </label>
 
       <label className="field">
         <input
