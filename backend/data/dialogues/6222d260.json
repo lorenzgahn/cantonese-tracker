@@ -1,0 +1,1432 @@
+{
+  "id": "6222d260",
+  "title": "Where are the Potatoes?",
+  "lines": [
+    {
+      "id": "scene-0",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-0-w0",
+          "word_id": "maa4maa4__嫲嫲",
+          "jyutping": "maa4 maa4",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-0-w1",
+          "word_id": "go3__個",
+          "jyutping": "go3",
+          "hanzi": "個",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-0-w2",
+          "word_id": "coi3jyun4__菜園",
+          "jyutping": "coi3 jyun4",
+          "hanzi": "菜園",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    },
+    {
+      "id": "scene-1",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-1-w0",
+          "word_id": "naa4naa2__嫲嫲",
+          "jyutping": "naa4naa2",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w1",
+          "word_id": "uk1kei2__屋企",
+          "jyutping": "uk1kei2",
+          "hanzi": "屋企",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w2",
+          "word_id": "ceot1min6__出面",
+          "jyutping": "ceot1min6",
+          "hanzi": "出面",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w3",
+          "word_id": "jau5__有",
+          "jyutping": "jau5",
+          "hanzi": "有",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w4",
+          "word_id": "go3__個",
+          "jyutping": "go3",
+          "hanzi": "個",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w5",
+          "word_id": "coi3jyun4__菜園",
+          "jyutping": "coi3jyun4",
+          "hanzi": "菜園",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w6",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w7",
+          "word_id": "zung1ji3__鍾意",
+          "jyutping": "zung1ji3",
+          "hanzi": "鍾意",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w8",
+          "word_id": "zung3__種",
+          "jyutping": "zung3",
+          "hanzi": "種",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w9",
+          "word_id": "coi3__菜",
+          "jyutping": "coi3",
+          "hanzi": "菜",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w10",
+          "word_id": "bei2__畀",
+          "jyutping": "bei2",
+          "hanzi": "畀",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w11",
+          "word_id": "zi6gei2__自己",
+          "jyutping": "zi6gei2",
+          "hanzi": "自己",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w12",
+          "word_id": "sik6__食",
+          "jyutping": "sik6",
+          "hanzi": "食",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w13",
+          "word_id": "hai2__喺",
+          "jyutping": "hai2",
+          "hanzi": "喺",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w14",
+          "word_id": "coi3jyun4__菜園",
+          "jyutping": "coi3jyun4",
+          "hanzi": "菜園",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w15",
+          "word_id": "dou6__度",
+          "jyutping": "dou6",
+          "hanzi": "度",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w16",
+          "word_id": "jau5__有",
+          "jyutping": "jau5",
+          "hanzi": "有",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w17",
+          "word_id": "hou2do1__好多",
+          "jyutping": "hou2do1",
+          "hanzi": "好多",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w18",
+          "word_id": "hou2__好",
+          "jyutping": "hou2",
+          "hanzi": "好",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w19",
+          "word_id": "hou2sik6__好食",
+          "jyutping": "hou2sik6",
+          "hanzi": "好食",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w20",
+          "word_id": "ge3__嘅",
+          "jyutping": "ge3",
+          "hanzi": "嘅",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w21",
+          "word_id": "je5__嘢",
+          "jyutping": "je5",
+          "hanzi": "嘢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w22",
+          "word_id": "naa4naa2__嫲嫲",
+          "jyutping": "naa4naa2",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w23",
+          "word_id": "giu3__叫",
+          "jyutping": "giu3",
+          "hanzi": "叫",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w24",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w25",
+          "word_id": "bong1__幫",
+          "jyutping": "bong1",
+          "hanzi": "幫",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w26",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w27",
+          "word_id": "sau2__手",
+          "jyutping": "sau2",
+          "hanzi": "手",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w28",
+          "word_id": "zaak3__摘",
+          "jyutping": "zaak3",
+          "hanzi": "摘",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w29",
+          "word_id": "di1__啲",
+          "jyutping": "di1",
+          "hanzi": "啲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w30",
+          "word_id": "faan1ke2__番茄",
+          "jyutping": "faan1ke2",
+          "hanzi": "番茄",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w31",
+          "word_id": "ngai2gwaa1__矮瓜",
+          "jyutping": "ngai2gwaa1",
+          "hanzi": "矮瓜",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w32",
+          "word_id": "tung4__同",
+          "jyutping": "tung4",
+          "hanzi": "同",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w33",
+          "word_id": "dau6__豆",
+          "jyutping": "dau6",
+          "hanzi": "豆",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-1-w34",
+          "word_id": "faan1lei4__返嚟",
+          "jyutping": "faan1lei4",
+          "hanzi": "返嚟",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    },
+    {
+      "id": "scene-2",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-2-w0",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w1",
+          "word_id": "ling1zyu6__拎住",
+          "jyutping": "ling1zyu6",
+          "hanzi": "拎住",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w2",
+          "word_id": "di1__啲",
+          "jyutping": "di1",
+          "hanzi": "啲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w3",
+          "word_id": "faan1ke2__番茄",
+          "jyutping": "faan1ke2",
+          "hanzi": "番茄",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w4",
+          "word_id": "ngai2gwaa1__矮瓜",
+          "jyutping": "ngai2gwaa1",
+          "hanzi": "矮瓜",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w5",
+          "word_id": "tung4__同",
+          "jyutping": "tung4",
+          "hanzi": "同",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w6",
+          "word_id": "dau6__豆",
+          "jyutping": "dau6",
+          "hanzi": "豆",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w7",
+          "word_id": "faan1lei4__返嚟",
+          "jyutping": "faan1lei4",
+          "hanzi": "返嚟",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w8",
+          "word_id": "bei2__畀",
+          "jyutping": "bei2",
+          "hanzi": "畀",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w9",
+          "word_id": "naa4naa2__嫲嫲",
+          "jyutping": "naa4naa2",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w10",
+          "word_id": "naa4naa2__嫲嫲",
+          "jyutping": "naa4naa2",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w11",
+          "word_id": "waa6__話",
+          "jyutping": "waa6",
+          "hanzi": "話",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w12",
+          "word_id": "mou5co3__冇錯",
+          "jyutping": "mou5co3",
+          "hanzi": "冇錯",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w13",
+          "word_id": "zaak3__摘",
+          "jyutping": "zaak3",
+          "hanzi": "摘",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w14",
+          "word_id": "ngaam1__啱",
+          "jyutping": "ngaam1",
+          "hanzi": "啱",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w15",
+          "word_id": "saai3__晒",
+          "jyutping": "saai3",
+          "hanzi": "晒",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w16",
+          "word_id": "zan1hai6__真係",
+          "jyutping": "zan1hai6",
+          "hanzi": "真係",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-2-w17",
+          "word_id": "lek1zai2__叻仔",
+          "jyutping": "lek1zai2",
+          "hanzi": "叻仔",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    },
+    {
+      "id": "scene-3",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-3-w0",
+          "word_id": "gan1zyu6__跟住",
+          "jyutping": "gan1 zyu6",
+          "hanzi": "跟住",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w1",
+          "word_id": "maa4maa4__嫲嫲",
+          "jyutping": "maa4 maa4",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w2",
+          "word_id": "giu3__叫",
+          "jyutping": "giu3",
+          "hanzi": "叫",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w3",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w4",
+          "word_id": "bong1__幫",
+          "jyutping": "bong1",
+          "hanzi": "幫",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w5",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w6",
+          "word_id": "wan2__揾",
+          "jyutping": "wan2",
+          "hanzi": "揾",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w7",
+          "word_id": "di1__啲",
+          "jyutping": "di1",
+          "hanzi": "啲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w8",
+          "word_id": "syu4zai2__薯仔",
+          "jyutping": "syu4 zai2",
+          "hanzi": "薯仔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w9",
+          "word_id": "faan2lai2__返嚟",
+          "jyutping": "faan2 lai2",
+          "hanzi": "返嚟",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w10",
+          "word_id": "maa4maa4__嫲嫲",
+          "jyutping": "maa4 maa4",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w11",
+          "word_id": "giu3__叫",
+          "jyutping": "giu3",
+          "hanzi": "叫",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w12",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w13",
+          "word_id": "maan6maan2__慢慢",
+          "jyutping": "maan6 maan2",
+          "hanzi": "慢慢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w14",
+          "word_id": "wan2__揾",
+          "jyutping": "wan2",
+          "hanzi": "揾",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w15",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w16",
+          "word_id": "waa6__話",
+          "jyutping": "waa6",
+          "hanzi": "話",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w17",
+          "word_id": "zing6hai6__淨係",
+          "jyutping": "zing6 hai6",
+          "hanzi": "淨係",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w18",
+          "word_id": "jung6ngaan5__用眼",
+          "jyutping": "jung6 ngaan5",
+          "hanzi": "用眼",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w19",
+          "word_id": "tai2__睇",
+          "jyutping": "tai2",
+          "hanzi": "睇",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w20",
+          "word_id": "m4__唔",
+          "jyutping": "m4",
+          "hanzi": "唔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w21",
+          "word_id": "dou3__到",
+          "jyutping": "dou3",
+          "hanzi": "到",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w22",
+          "word_id": "di1__啲",
+          "jyutping": "di1",
+          "hanzi": "啲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w23",
+          "word_id": "syu4zai2__薯仔",
+          "jyutping": "syu4 zai2",
+          "hanzi": "薯仔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w24",
+          "word_id": "gaa4__㗎",
+          "jyutping": "gaa4",
+          "hanzi": "㗎",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w25",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w26",
+          "word_id": "zing6hai6__淨係",
+          "jyutping": "zing6 hai6",
+          "hanzi": "淨係",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w27",
+          "word_id": "mo2__摸",
+          "jyutping": "mo2",
+          "hanzi": "摸",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w28",
+          "word_id": "dou3__到",
+          "jyutping": "dou3",
+          "hanzi": "到",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w29",
+          "word_id": "di1__啲",
+          "jyutping": "di1",
+          "hanzi": "啲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w30",
+          "word_id": "cou2__草",
+          "jyutping": "cou2",
+          "hanzi": "草",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w31",
+          "word_id": "wan2__揾",
+          "jyutping": "wan2",
+          "hanzi": "揾",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w32",
+          "word_id": "m4__唔",
+          "jyutping": "m4",
+          "hanzi": "唔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w33",
+          "word_id": "dou3__到",
+          "jyutping": "dou3",
+          "hanzi": "到",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w34",
+          "word_id": "syu4zai2__薯仔",
+          "jyutping": "syu4 zai2",
+          "hanzi": "薯仔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-3-w35",
+          "word_id": "hai2bin1__喺邊",
+          "jyutping": "hai2bin1",
+          "hanzi": "喺邊",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    },
+    {
+      "id": "scene-4",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-4-w0",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w1",
+          "word_id": "faan1heoi3__返去",
+          "jyutping": "faan1heoi3",
+          "hanzi": "返去",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w2",
+          "word_id": "tung4__同",
+          "jyutping": "tung4",
+          "hanzi": "同",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w3",
+          "word_id": "naa4naa2__嫲嫲",
+          "jyutping": "naa4naa2",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w4",
+          "word_id": "gong2__講",
+          "jyutping": "gong2",
+          "hanzi": "講",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w5",
+          "word_id": "coi3jyun4__菜園",
+          "jyutping": "coi3jyun4",
+          "hanzi": "菜園",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w6",
+          "word_id": "jap6min6__入面",
+          "jyutping": "jap6min6",
+          "hanzi": "入面",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w7",
+          "word_id": "mou5__冇",
+          "jyutping": "mou5",
+          "hanzi": "冇",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w8",
+          "word_id": "saai3__晒",
+          "jyutping": "saai3",
+          "hanzi": "晒",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w9",
+          "word_id": "syu4zai2__薯仔",
+          "jyutping": "syu4zai2",
+          "hanzi": "薯仔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w10",
+          "word_id": "laa3__喇",
+          "jyutping": "laa3",
+          "hanzi": "喇",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w11",
+          "word_id": "naa4naa2__嫲嫲",
+          "jyutping": "naa4naa2",
+          "hanzi": "嫲嫲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w12",
+          "word_id": "waa6__話",
+          "jyutping": "waa6",
+          "hanzi": "話",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w13",
+          "word_id": "jau5__有",
+          "jyutping": "jau5",
+          "hanzi": "有",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w14",
+          "word_id": "gaa3__㗎",
+          "jyutping": "gaa3",
+          "hanzi": "㗎",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w15",
+          "word_id": "nei5__你",
+          "jyutping": "nei5",
+          "hanzi": "你",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w16",
+          "word_id": "si3haa5__試下",
+          "jyutping": "si3haa5",
+          "hanzi": "試下",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w17",
+          "word_id": "maan6maan2__慢慢",
+          "jyutping": "maan6maan2",
+          "hanzi": "慢慢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w18",
+          "word_id": "wan2__揾",
+          "jyutping": "wan2",
+          "hanzi": "揾",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w19",
+          "word_id": "jat1ding6__一定",
+          "jyutping": "jat1ding6",
+          "hanzi": "一定",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w20",
+          "word_id": "wan2dou2__揾到",
+          "jyutping": "wan2dou2",
+          "hanzi": "揾到",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-4-w21",
+          "word_id": "gaa3__㗎",
+          "jyutping": "gaa3",
+          "hanzi": "㗎",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    },
+    {
+      "id": "scene-5",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-5-w0",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w1",
+          "word_id": "heoi3__去",
+          "jyutping": "heoi3",
+          "hanzi": "去",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w2",
+          "word_id": "do1__多",
+          "jyutping": "do1",
+          "hanzi": "多",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w3",
+          "word_id": "ci3__次",
+          "jyutping": "ci3",
+          "hanzi": "次",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w4",
+          "word_id": "coi3jyun4__菜園",
+          "jyutping": "coi3jyun4",
+          "hanzi": "菜園",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w5",
+          "word_id": "gau2zai2__狗仔",
+          "jyutping": "gau2zai2",
+          "hanzi": "狗仔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w6",
+          "word_id": "siu2hak1__小黑",
+          "jyutping": "siu2hak1",
+          "hanzi": "小黑",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w7",
+          "word_id": "dou1__都",
+          "jyutping": "dou1",
+          "hanzi": "都",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w8",
+          "word_id": "tung4__同",
+          "jyutping": "tung4",
+          "hanzi": "同",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w9",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w10",
+          "word_id": "jat1cai4__一齊",
+          "jyutping": "jat1cai4",
+          "hanzi": "一齊",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-5-w11",
+          "word_id": "haang4__行",
+          "jyutping": "haang4",
+          "hanzi": "行",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    },
+    {
+      "id": "scene-6",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-6-w0",
+          "word_id": "dat6jin4gaan1__突然間",
+          "jyutping": "dat6jin4gaan1",
+          "hanzi": "突然間",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w1",
+          "word_id": "siu2hak1__小黑",
+          "jyutping": "siu2hak1",
+          "hanzi": "小黑",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w2",
+          "word_id": "jau6__又",
+          "jyutping": "jau6",
+          "hanzi": "又",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w3",
+          "word_id": "paau2__跑",
+          "jyutping": "paau2",
+          "hanzi": "跑",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w4",
+          "word_id": "jau6__又",
+          "jyutping": "jau6",
+          "hanzi": "又",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w5",
+          "word_id": "tiu3__跳",
+          "jyutping": "tiu3",
+          "hanzi": "跳",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w6",
+          "word_id": "zung6__仲",
+          "jyutping": "zung6",
+          "hanzi": "仲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w7",
+          "word_id": "hai2dou6__喺度",
+          "jyutping": "hai2dou6",
+          "hanzi": "喺度",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w8",
+          "word_id": "daai6giu3__大叫",
+          "jyutping": "daai6giu3",
+          "hanzi": "大叫",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w9",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w10",
+          "word_id": "go3__個",
+          "jyutping": "go3",
+          "hanzi": "個",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w11",
+          "word_id": "joeng2__樣",
+          "jyutping": "joeng2",
+          "hanzi": "樣",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w12",
+          "word_id": "hou2__好",
+          "jyutping": "hou2",
+          "hanzi": "好",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w13",
+          "word_id": "hoi1sam1__開心",
+          "jyutping": "hoi1sam1",
+          "hanzi": "開心",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w14",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w15",
+          "word_id": "gan1zyu6__跟住",
+          "jyutping": "gan1zyu6",
+          "hanzi": "跟住",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w16",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w17",
+          "word_id": "paau2__跑",
+          "jyutping": "paau2",
+          "hanzi": "跑",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w18",
+          "word_id": "tai2haa5__睇下",
+          "jyutping": "tai2haa5",
+          "hanzi": "睇下",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w19",
+          "word_id": "jau5__有",
+          "jyutping": "jau5",
+          "hanzi": "有",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w20",
+          "word_id": "me1__咩",
+          "jyutping": "me1",
+          "hanzi": "咩",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-6-w21",
+          "word_id": "si6__事",
+          "jyutping": "si6",
+          "hanzi": "事",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    },
+    {
+      "id": "scene-7",
+      "speaker": null,
+      "words": [
+        {
+          "token_id": "scene-7-w0",
+          "word_id": "siu2hak1__小黑",
+          "jyutping": "siu2hak1",
+          "hanzi": "小黑",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w1",
+          "word_id": "man4__聞",
+          "jyutping": "man4",
+          "hanzi": "聞",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w2",
+          "word_id": "dou3__到",
+          "jyutping": "dou3",
+          "hanzi": "到",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w3",
+          "word_id": "di1__啲",
+          "jyutping": "di1",
+          "hanzi": "啲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w4",
+          "word_id": "syu4zai2__薯仔",
+          "jyutping": "syu4zai2",
+          "hanzi": "薯仔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w5",
+          "word_id": "hai2__喺",
+          "jyutping": "hai2",
+          "hanzi": "喺",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w6",
+          "word_id": "bin1__邊",
+          "jyutping": "bin1",
+          "hanzi": "邊",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w7",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w8",
+          "word_id": "go3__個",
+          "jyutping": "go3",
+          "hanzi": "個",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w9",
+          "word_id": "bei6__鼻",
+          "jyutping": "bei6",
+          "hanzi": "鼻",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w10",
+          "word_id": "zan1hai6__真係",
+          "jyutping": "zan1hai6",
+          "hanzi": "真係",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w11",
+          "word_id": "hou2__好",
+          "jyutping": "hou2",
+          "hanzi": "好",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w12",
+          "word_id": "sai1lei6__犀利",
+          "jyutping": "sai1lei6",
+          "hanzi": "犀利",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w13",
+          "word_id": "nei5__「你",
+          "jyutping": "nei5",
+          "hanzi": "「你",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w14",
+          "word_id": "zan1hai6__真係",
+          "jyutping": "zan1hai6",
+          "hanzi": "真係",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w15",
+          "word_id": "hou2__好",
+          "jyutping": "hou2",
+          "hanzi": "好",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w16",
+          "word_id": "lek1__叻",
+          "jyutping": "lek1",
+          "hanzi": "叻",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w17",
+          "word_id": "aa3__啊",
+          "jyutping": "aa3",
+          "hanzi": "啊",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w18",
+          "word_id": "hai6__係",
+          "jyutping": "hai6",
+          "hanzi": "係",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w19",
+          "word_id": "nei5__你",
+          "jyutping": "nei5",
+          "hanzi": "你",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w20",
+          "word_id": "sin1__先",
+          "jyutping": "sin1",
+          "hanzi": "先",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w21",
+          "word_id": "wan2__揾",
+          "jyutping": "wan2",
+          "hanzi": "揾",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w22",
+          "word_id": "dou2__到",
+          "jyutping": "dou2",
+          "hanzi": "到",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w23",
+          "word_id": "zaa3__咋」",
+          "jyutping": "zaa3",
+          "hanzi": "咋」",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w24",
+          "word_id": "ngo5__我",
+          "jyutping": "ngo5",
+          "hanzi": "我",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w25",
+          "word_id": "mo2mo2__摸摸",
+          "jyutping": "mo2mo2",
+          "hanzi": "摸摸",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w26",
+          "word_id": "keoi5__佢",
+          "jyutping": "keoi5",
+          "hanzi": "佢",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w27",
+          "word_id": "go3__個",
+          "jyutping": "go3",
+          "hanzi": "個",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w28",
+          "word_id": "tau4__頭",
+          "jyutping": "tau4",
+          "hanzi": "頭",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w29",
+          "word_id": "jyun4loi4__原來",
+          "jyutping": "jyun4loi4",
+          "hanzi": "原來",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w30",
+          "word_id": "di1__啲",
+          "jyutping": "di1",
+          "hanzi": "啲",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w31",
+          "word_id": "syu4zai2__薯仔",
+          "jyutping": "syu4zai2",
+          "hanzi": "薯仔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w32",
+          "word_id": "saang1__生",
+          "jyutping": "saang1",
+          "hanzi": "生",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w33",
+          "word_id": "hai2__喺",
+          "jyutping": "hai2",
+          "hanzi": "喺",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w34",
+          "word_id": "nai4__泥",
+          "jyutping": "nai4",
+          "hanzi": "泥",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w35",
+          "word_id": "haa6min6__下面",
+          "jyutping": "haa6min6",
+          "hanzi": "下面",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w36",
+          "word_id": "m4__唔",
+          "jyutping": "m4",
+          "hanzi": "唔",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w37",
+          "word_id": "ci5__似",
+          "jyutping": "ci5",
+          "hanzi": "似",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w38",
+          "word_id": "ai2gwaa1__矮瓜",
+          "jyutping": "ai2gwaa1",
+          "hanzi": "矮瓜",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w39",
+          "word_id": "gam2__噉",
+          "jyutping": "gam2",
+          "hanzi": "噉",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w40",
+          "word_id": "bei2__畀",
+          "jyutping": "bei2",
+          "hanzi": "畀",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w41",
+          "word_id": "jan4__人",
+          "jyutping": "jan4",
+          "hanzi": "人",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w42",
+          "word_id": "gin3__見",
+          "jyutping": "gin3",
+          "hanzi": "見",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w43",
+          "word_id": "dou3__到",
+          "jyutping": "dou3",
+          "hanzi": "到",
+          "trailing_punctuation": ""
+        },
+        {
+          "token_id": "scene-7-w44",
+          "word_id": "gaa3__㗎",
+          "jyutping": "gaa3",
+          "hanzi": "㗎",
+          "trailing_punctuation": ""
+        }
+      ],
+      "english": null
+    }
+  ],
+  "source_type": "hanzi_narrative",
+  "imported_at": "2026-07-30",
+  "series": "Hambaanglaang",
+  "level": 2,
+  "definition_overrides": {
+    "zung3__種": "to grow",
+    "sau2__手": "personal(ly)",
+    "zaak3__摘": "to pick (flowers, fruit etc)",
+    "dau6__豆": "bean; pea",
+    "mo2__摸": "touch",
+    "paau2__跑": "to run",
+    "joeng2__樣": "appearance",
+    "man4__聞": "to smell",
+    "zaa3__咋」": "only; that's it; it's just",
+    "jyun4loi4__原來": "so; It turns out / actually ",
+    "saang1__生": "to grow",
+    "nai4__泥": "soil"
+  },
+  "link_url": "https://hambaanglaang.hk/where-are-the-potatoes/"
+}

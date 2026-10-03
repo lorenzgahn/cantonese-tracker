@@ -375,3 +375,125 @@ button:disabled {
 .row-menu-delete:hover {
   background: rgba(192, 57, 43, 0.1);
 }
+
+.flagged-words-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.flagged-words-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.times-studied {
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.study-button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+  cursor: pointer;
+}
+
+.study-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.flashcard-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.flashcard-modal {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: min(420px, 90vw);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.flashcard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.flashcard-close-button {
+  font: inherit;
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+.flashcard-close-button:hover {
+  color: var(--fg);
+}
+
+.flashcard-card {
+  min-height: 160px;
+  border: 1px solid var(--muted);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.flashcard-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85em;
+  margin-top: 0.75rem;
+}
+
+.flashcard-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.flashcard-grade-button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  border: 1px solid var(--muted);
+  background: none;
+  cursor: pointer;
+}
+
+.flashcard-known {
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+
+.flashcard-unknown {
+  border-color: #c0392b;
+  color: #c0392b;
+}

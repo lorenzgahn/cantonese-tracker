@@ -8,6 +8,7 @@ import {
   mergeWithNext,
   normalizeUrl,
   promoteWord,
+  recordStudySession,
   reevaluateWord,
   setDefinitionOverride,
   setDialogueLink,
@@ -15,6 +16,7 @@ import {
   unclickWord,
 } from "../api/client";
 import { DialogueBulletList } from "../components/DialogueBulletList";
+import { FlashcardStudy } from "../components/FlashcardStudy";
 import { LineBulletList } from "../components/LineBulletList";
 import { WordToken } from "../components/WordToken";
 import type { Dialogue, VocabEntry } from "../types";
@@ -25,6 +27,7 @@ export function ReviewPage() {
   const [dialogue, setDialogue] = useState<Dialogue | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [finishing, setFinishing] = useState(false);
+  const [studying, setStudying] = useState(false);
 
   useEffect(() => {
     setDialogue(null);
@@ -143,6 +146,14 @@ export function ReviewPage() {
     setDialogue(updated);
   }
 
+  // Bumps times_studied on the server once a flashcard deck has been
+  // fully cleared (see FlashcardStudy) — full-dialogue replacement is
+  // fine here since only that counter changed, no word state.
+  async function handleFinishStudySession() {
+    const updated = await recordStudySession(dialogueId);
+    setDialogue(updated);
+  }
+
   async function handleFinishReview() {
     if (!dialogue) return;
     setFinishing(true);
@@ -161,6 +172,18 @@ export function ReviewPage() {
 
   if (error) return <p className="error">Failed to load dialogue: {error}</p>;
   if (!dialogue) return <p>Loading…</p>;
+
+  // Same flagged-and-deduped set DialogueBulletList renders below — the
+  // flashcard deck studies exactly what that section already shows.
+  const seenWordIds = new Set<string>();
+  const flaggedWords = dialogue.lines
+    .flatMap((line) => line.words)
+    .filter((w) => w.status === "learning" || w.status === "learned")
+    .filter((w) => {
+      if (seenWordIds.has(w.word_id)) return false;
+      seenWordIds.add(w.word_id);
+      return true;
+    });
 
   return (
     <div className="review-page">
@@ -207,7 +230,15 @@ export function ReviewPage() {
       ))}
 
       <hr />
-      <h2>All flagged words in this dialogue</h2>
+      <div className="flagged-words-header">
+        <h2>All flagged words in this dialogue</h2>
+        <div className="flagged-words-header-actions">
+          <span className="times-studied">Times studied: {dialogue.times_studied}</span>
+          <button className="study-button" onClick={() => setStudying(true)} disabled={flaggedWords.length === 0}>
+            Study
+          </button>
+        </div>
+      </div>
       <DialogueBulletList
         dialogue={dialogue}
         onToggle={handleToggle}
@@ -219,6 +250,14 @@ export function ReviewPage() {
       <button className="finish-review-button" onClick={handleFinishReview} disabled={finishing}>
         {finishing ? "Saving…" : "Finish Review"}
       </button>
+
+      {studying && (
+        <FlashcardStudy
+          words={flaggedWords}
+          onFinish={handleFinishStudySession}
+          onClose={() => setStudying(false)}
+        />
+      )}
     </div>
   );
 }

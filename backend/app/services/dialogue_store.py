@@ -53,6 +53,21 @@ def set_link_url(dialogue_id: str, url: str | None) -> StoredDialogue:
     return stored
 
 
+def increment_times_studied(dialogue_id: str) -> StoredDialogue:
+    """Bumps this dialogue's flashcard-session counter — called once a
+    Study session's deck has been fully cleared (see FlashcardStudy on
+    the frontend), never on an early exit. Purely a per-dialogue display
+    counter: it doesn't touch word status/definitions, so it's unrelated
+    to vocab_store or definition_overrides. Raises ValueError if the
+    dialogue doesn't exist."""
+    stored = load_stored(dialogue_id)
+    if stored is None:
+        raise ValueError(f"No dialogue {dialogue_id!r}")
+    stored.times_studied += 1
+    save_stored(stored)
+    return stored
+
+
 def set_definition_override(dialogue_id: str, word_id: str, definition: str) -> StoredDialogue:
     """Records a definition for word_id that only applies within this
     dialogue — for a jyutping that's shared globally but means something
@@ -301,6 +316,7 @@ def join_with_vocab(stored: StoredDialogue) -> Dialogue:
         series=stored.series,
         level=stored.level,
         link_url=stored.link_url,
+        times_studied=stored.times_studied,
     )
 
 

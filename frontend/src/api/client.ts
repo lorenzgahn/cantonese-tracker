@@ -105,6 +105,13 @@ export function setDialogueLink(dialogueId: string, url: string | null): Promise
   return postJson(`/api/dialogues/${dialogueId}/link`, { url });
 }
 
+// Bumps this dialogue's times_studied counter — call once when a
+// Flashcard Study session's deck has been fully cleared, never on an
+// early exit.
+export function recordStudySession(dialogueId: string): Promise<Dialogue> {
+  return request<Dialogue>(`/api/dialogues/${dialogueId}/study-session`, { method: "POST" });
+}
+
 // --- Import ---
 
 export function detectInputType(args: { text?: string; filename?: string }): Promise<DetectedInputType> {

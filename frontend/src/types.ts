@@ -27,6 +27,7 @@ export interface Dialogue {
   series: string;
   level: number | null;
   link_url: string | null;
+  times_studied: number;
 }
 
 export type DialogueSeries = "Hambaanglaang" | "Cantonese Conversations" | "Other";

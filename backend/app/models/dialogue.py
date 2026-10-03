@@ -44,6 +44,7 @@ class StoredDialogue(BaseModel):
     level: int | None = None  # Hambaanglaang's numbered level (1, 2, ...); blank for series without one
     definition_overrides: dict[str, str] = {}  # word_id -> this dialogue's own sense, when the shared default is wrong here
     link_url: str | None = None  # link to the original audio/video/source content, shown as "Link to Dialogue" on Review
+    times_studied: int = 0  # how many flashcard sessions have been fully completed for this dialogue (see review.py's study-session endpoint)
 
 
 class WordToken(BaseModel):
@@ -75,3 +76,4 @@ class Dialogue(BaseModel):
     series: str = "Other"
     level: int | None = None
     link_url: str | None = None
+    times_studied: int = 0

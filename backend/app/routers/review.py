@@ -66,6 +66,19 @@ def set_dialogue_link(dialogue_id: str, body: SetLinkRequest) -> Dialogue:
     return dialogue_store.get_dialogue(dialogue_id)
 
 
+@router.post("/{dialogue_id}/study-session", response_model=Dialogue)
+def record_study_session(dialogue_id: str) -> Dialogue:
+    """Bumps this dialogue's times_studied counter — the frontend calls
+    this once when a Flashcard Study session's deck has been fully
+    cleared (see dialogue_store.increment_times_studied), never on an
+    early exit."""
+    try:
+        dialogue_store.increment_times_studied(dialogue_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    return dialogue_store.get_dialogue(dialogue_id)
+
+
 @router.post("/{dialogue_id}/words/{word_id}/click", response_model=VocabEntry)
 def click_word(dialogue_id: str, word_id: str) -> VocabEntry:
     stored = dialogue_store.load_stored(dialogue_id)
