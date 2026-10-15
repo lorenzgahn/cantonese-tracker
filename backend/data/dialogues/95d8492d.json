@@ -321,7 +321,8 @@
           "hanzi": "呢",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-1",
@@ -397,7 +398,8 @@
           "hanzi": "可我哋",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-2",
@@ -417,7 +419,8 @@
           "hanzi": "呀",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-3",
@@ -878,7 +881,8 @@
           "hanzi": "囉",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-4",
@@ -940,7 +944,8 @@
           "hanzi": "喇",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-5",
@@ -981,7 +986,8 @@
           "hanzi": "囉",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-6",
@@ -994,7 +1000,8 @@
           "hanzi": "係",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-7",
@@ -1077,7 +1084,8 @@
           "hanzi": "倫敦",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-8",
@@ -1090,7 +1098,8 @@
           "hanzi": "唔係。Er...喺Somerset",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-9",
@@ -1103,7 +1112,8 @@
           "hanzi": "哦!Somerset House",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-10",
@@ -1116,7 +1126,8 @@
           "hanzi": "Somerset House,好靚呀。",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-11",
@@ -1129,7 +1140,8 @@
           "hanzi": "嗯",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-12",
@@ -1226,7 +1238,8 @@
           "hanzi": "時候",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-13",
@@ -1309,7 +1322,8 @@
           "hanzi": "呢",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-14",
@@ -1399,7 +1413,8 @@
           "hanzi": "犀利",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-15",
@@ -1419,7 +1434,8 @@
           "hanzi": "哈哈",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-16",
@@ -1593,7 +1609,8 @@
           "hanzi": "嘅",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-17",
@@ -1641,7 +1658,8 @@
           "hanzi": "嘅",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-18",
@@ -1913,7 +1931,8 @@
           "hanzi": "呢",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-19",
@@ -1940,7 +1959,8 @@
           "hanzi": "係",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-20",
@@ -2331,7 +2351,8 @@
           "hanzi": "呢",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-21",
@@ -2395,16 +2416,9 @@
         },
         {
           "token_id": "line-21-w9",
-          "word_id": "waa6__話",
-          "jyutping": "waa6",
-          "hanzi": "話",
-          "trailing_punctuation": ""
-        },
-        {
-          "token_id": "line-21-w10",
-          "word_id": "saai3__曬",
-          "jyutping": "saai3",
-          "hanzi": "曬",
+          "word_id": "waa6saai3__話曬",
+          "jyutping": "waa6 saai3",
+          "hanzi": "話曬",
           "trailing_punctuation": ""
         },
         {
@@ -2477,7 +2491,8 @@
           "hanzi": "大啦",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-22",
@@ -2574,7 +2589,8 @@
           "hanzi": "讀",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-23",
@@ -3014,7 +3030,8 @@
           "hanzi": "囉",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-24",
@@ -3069,7 +3086,8 @@
           "hanzi": "囉",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-25",
@@ -3404,7 +3422,8 @@
           "hanzi": "都",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-26",
@@ -3424,7 +3443,8 @@
           "hanzi": "囉",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-27",
@@ -3654,7 +3674,8 @@
           "hanzi": "哈",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-28",
@@ -3674,7 +3695,8 @@
           "hanzi": "哈哈",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-29",
@@ -3729,7 +3751,8 @@
           "hanzi": "嘅",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-30",
@@ -3924,7 +3947,8 @@
           "hanzi": "㗎",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-31",
@@ -3944,7 +3968,8 @@
           "hanzi": "呀",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-32",
@@ -4027,7 +4052,8 @@
           "hanzi": "嘅會",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-33",
@@ -4159,7 +4185,8 @@
           "hanzi": "而家",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-34",
@@ -4200,7 +4227,8 @@
           "hanzi": "係",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-35",
@@ -4213,7 +4241,8 @@
           "hanzi": "嗯",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-36",
@@ -4317,7 +4346,8 @@
           "hanzi": "都",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-37",
@@ -4386,7 +4416,8 @@
           "hanzi": "嘛",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-38",
@@ -4588,7 +4619,8 @@
           "hanzi": "試",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-39",
@@ -4622,7 +4654,8 @@
           "hanzi": "試",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-40",
@@ -4691,7 +4724,8 @@
           "hanzi": "喇",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-41",
@@ -4711,7 +4745,8 @@
           "hanzi": "呀",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-42",
@@ -4773,7 +4808,8 @@
           "hanzi": "咋",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-43",
@@ -4793,7 +4829,8 @@
           "hanzi": "呀",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-44",
@@ -4820,7 +4857,8 @@
           "hanzi": "所以",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-45",
@@ -4875,7 +4913,8 @@
           "hanzi": "嘅",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     },
     {
       "id": "line-46",
@@ -4909,7 +4948,8 @@
           "hanzi": "你",
           "trailing_punctuation": ""
         }
-      ]
+      ],
+      "english": null
     }
   ],
   "source_type": "structured_pdf",
@@ -4927,7 +4967,13 @@
     "ceng2__請": "invite, treat",
     "kei4si6__歧視": "actually, in reality",
     "zik1hai6__即係": "(adverb) same as; exactly as; in other words",
-    "ci4di1__遲啲": "sooner or later"
+    "ci4di1__遲啲": "sooner or later",
+    "lo1__囉": "it is",
+    "jiu3__要": "to demand",
+    "waa6__話": "(verb) in charge",
+    "jyun5__遠": "far",
+    "hai6__係": "to be"
   },
-  "link_url": "https://courses.storylearning.com/courses/569283/lectures/62467450"
+  "link_url": "https://courses.storylearning.com/courses/569283/lectures/62467450",
+  "times_studied": 0
 }

@@ -376,23 +376,10 @@ button:disabled {
   background: rgba(192, 57, 43, 0.1);
 }
 
-.flagged-words-header {
+.review-checkpoint {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.flagged-words-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.times-studied {
-  color: var(--muted);
-  font-size: 0.9em;
+  justify-content: flex-end;
+  margin: 0.5rem 0 1rem;
 }
 
 .study-button {
@@ -404,11 +391,6 @@ button:disabled {
   background: var(--fg);
   color: var(--bg);
   cursor: pointer;
-}
-
-.study-button:disabled {
-  opacity: 0.4;
-  cursor: default;
 }
 
 .flashcard-overlay {
@@ -464,6 +446,35 @@ button:disabled {
   font-weight: 600;
 }
 
+.flashcard-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.flashcard-audio-button {
+  font: inherit;
+  font-size: 0.9em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid var(--muted);
+  background: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.flashcard-audio-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.flashcard-audio-note {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
 .flashcard-hint {
   text-align: center;
   color: var(--muted);
@@ -496,4 +507,52 @@ button:disabled {
 .flashcard-unknown {
   border-color: #c0392b;
   color: #c0392b;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  max-width: 32rem;
+}
+
+.settings-form label {
+  font-weight: 600;
+}
+
+.settings-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.settings-form input {
+  font: inherit;
+  width: 6rem;
+  padding: 0.3rem 0.5rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+}
+
+.settings-save-button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+  cursor: pointer;
+}
+
+.settings-save-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.settings-saved {
+  color: #2e7d32;
 }

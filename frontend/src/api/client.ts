@@ -1,4 +1,4 @@
-import type { DetectedInputType, Dialogue, DialogueSeries, VocabEntry, VocabStatus } from "../types";
+import type { DetectedInputType, Dialogue, DialogueSeries, Settings, VocabEntry, VocabStatus } from "../types";
 
 const BASE_URL = "http://localhost:8000";
 
@@ -105,13 +105,6 @@ export function setDialogueLink(dialogueId: string, url: string | null): Promise
   return postJson(`/api/dialogues/${dialogueId}/link`, { url });
 }
 
-// Bumps this dialogue's times_studied counter — call once when a
-// Flashcard Study session's deck has been fully cleared, never on an
-// early exit.
-export function recordStudySession(dialogueId: string): Promise<Dialogue> {
-  return request<Dialogue>(`/api/dialogues/${dialogueId}/study-session`, { method: "POST" });
-}
-
 // --- Import ---
 
 export function detectInputType(args: { text?: string; filename?: string }): Promise<DetectedInputType> {
@@ -201,4 +194,18 @@ export function upsertWord(
 
 export function deleteWord(wordId: string): Promise<void> {
   return request(`/api/vocab/${wordId}`, { method: "DELETE" });
+}
+
+// --- Settings ---
+
+export function getSettings(): Promise<Settings> {
+  return request<Settings>("/api/settings");
+}
+
+export function updateSettings(settings: Settings): Promise<Settings> {
+  return request<Settings>("/api/settings", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(settings),
+  });
 }

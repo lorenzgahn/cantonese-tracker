@@ -413,18 +413,18 @@
           "trailing_punctuation": ""
         },
         {
-          "token_id": "line-3-w13",
-          "word_id": "gaa1__家",
-          "jyutping": "gaa1",
-          "hanzi": "家",
+          "token_id": "line-3-w13-s0",
+          "word_id": "gaa1jung6__家用",
+          "jyutping": "gaa1 jung6",
+          "hanzi": "家用",
           "trailing_punctuation": ""
         },
         {
-          "token_id": "line-3-w14",
-          "word_id": "jung6laa1__用啦",
-          "jyutping": "jung6 laa1",
-          "hanzi": "用啦",
-          "trailing_punctuation": "..."
+          "token_id": "line-3-w13-s2",
+          "word_id": "laa1__啦",
+          "jyutping": "laa1",
+          "hanzi": "啦",
+          "trailing_punctuation": ""
         }
       ],
       "english": "It says...as far as I remember, say you have $30,000, you’ve got to contribute a part of that to your family..."
@@ -1093,16 +1093,9 @@
         },
         {
           "token_id": "line-16-w7",
-          "word_id": "dak1__得",
-          "jyutping": "dak1",
-          "hanzi": "得",
-          "trailing_punctuation": ""
-        },
-        {
-          "token_id": "line-16-w8",
-          "word_id": "faan1__返",
-          "jyutping": "faan1",
-          "hanzi": "返",
+          "word_id": "dak1faan1__得返",
+          "jyutping": "dak1 faan1",
+          "hanzi": "得返",
           "trailing_punctuation": ""
         },
         {
@@ -5553,7 +5546,11 @@
     "zaak2__宅": "residence",
     "jim4__嫌": "to complain of",
     "sai3__細": "small; tiny",
-    "cin2__錢": "Money"
+    "cin2__錢": "Money",
+    "jung6__用": "expense or outlay",
+    "naa4__嗱": "(Cant.) exclamation, there! now!",
+    "mei6__未": "have not"
   },
-  "link_url": "https://courses.storylearning.com/courses/569283/lectures/62467449"
+  "link_url": "https://courses.storylearning.com/courses/569283/lectures/62467449",
+  "times_studied": 0
 }

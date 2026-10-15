@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { hasCantoneseVoice, onVoicesChanged, speakCantonese } from "../speech";
 import type { WordToken } from "../types";
 
 interface Props {
   words: WordToken[];
-  onFinish: () => void;
   onClose: () => void;
 }
 
@@ -26,33 +26,41 @@ function shuffled(words: WordToken[]): Card[] {
 // forever in one sitting.
 const MAX_MISSES = 3;
 
-/** Per-dialogue flashcard drill over this dialogue's flagged words —
- * jyutping on the front, definition on the back. Deliberately
- * session-local: grading a card here never touches vocab_store's
- * known/learning/learned status (that's still only set from the Review
- * page itself) — the only durable trace of a session is the caller
- * bumping times_studied once the deck is fully cleared. */
-export function FlashcardStudy({ words, onFinish, onClose }: Props) {
+/** Flashcard drill over one checkpoint's chunk of flagged words (see
+ * ReviewPage) — jyutping on the front, definition on the back, spoken
+ * aloud in Cantonese when the card appears. Deliberately session-local:
+ * grading a card here never touches vocab_store's known/learning/learned
+ * status (that's still only set from the Review page itself). */
+export function FlashcardStudy({ words, onClose }: Props) {
   const [queue, setQueue] = useState<Card[]>(() => shuffled(words));
   const [flipped, setFlipped] = useState(false);
-  const [done, setDone] = useState(false);
+  const [voiceReady, setVoiceReady] = useState(hasCantoneseVoice);
+
+  useEffect(() => onVoicesChanged(() => setVoiceReady(hasCantoneseVoice())), []);
+
+  const current: Card | undefined = queue[0];
+  const hanzi = current?.word.hanzi ?? null;
+
+  // Keyed on the card object, not the word, so a missed card that comes
+  // back around is spoken again.
+  useEffect(() => {
+    if (hanzi && voiceReady) speakCantonese(hanzi);
+  }, [current, hanzi, voiceReady]);
+
+  useEffect(() => () => window.speechSynthesis?.cancel(), []);
 
   function handleGrade(knewIt: boolean) {
-    const [current, ...rest] = queue;
+    const [card, ...rest] = queue;
     let next = rest;
     if (!knewIt) {
-      const misses = current.misses + 1;
-      if (misses < MAX_MISSES) next = [...rest, { word: current.word, misses }];
+      const misses = card.misses + 1;
+      if (misses < MAX_MISSES) next = [...rest, { word: card.word, misses }];
     }
     setQueue(next);
     setFlipped(false);
-    if (next.length === 0) {
-      setDone(true);
-      onFinish();
-    }
   }
 
-  if (done) {
+  if (!current) {
     return (
       <div className="flashcard-overlay">
         <div className="flashcard-modal">
@@ -65,7 +73,11 @@ export function FlashcardStudy({ words, onFinish, onClose }: Props) {
     );
   }
 
-  const current = queue[0];
+  const audioUnavailable = !voiceReady
+    ? "No Cantonese voice is installed in this browser"
+    : !hanzi
+      ? "No audio for this word"
+      : null;
 
   return (
     <div className="flashcard-overlay">
@@ -82,6 +94,17 @@ export function FlashcardStudy({ words, onFinish, onClose }: Props) {
           ) : (
             <span className="flashcard-jyutping">{current.word.jyutping}</span>
           )}
+        </div>
+        <div className="flashcard-audio">
+          <button
+            className="flashcard-audio-button"
+            onClick={() => hanzi && speakCantonese(hanzi)}
+            disabled={audioUnavailable !== null}
+            title={audioUnavailable ?? "Play audio"}
+          >
+            🔊 Play audio
+          </button>
+          {audioUnavailable && <span className="flashcard-audio-note">{audioUnavailable}</span>}
         </div>
         {!flipped ? (
           <p className="flashcard-hint">Click the card to reveal the definition</p>

@@ -27,7 +27,10 @@ export interface Dialogue {
   series: string;
   level: number | null;
   link_url: string | null;
-  times_studied: number;
+}
+
+export interface Settings {
+  review_chunk_size: number;
 }
 
 export type DialogueSeries = "Hambaanglaang" | "Cantonese Conversations" | "Other";
